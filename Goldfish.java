@@ -1,6 +1,4 @@
 import java.util.*;
-import java.util.Collections;
-import java.util.Scanner;
 
 public class Goldfish {
     public static ArrayList<Card> jokers;
@@ -32,6 +30,7 @@ public class Goldfish {
         //cpuCards.add(temp);
         //cpuCards.add(temp);
         trade();
+        input.close();
     }
 
     public static void countFish(ArrayList<Card> c, boolean isPlayer) {
@@ -168,7 +167,7 @@ public class Goldfish {
             slowPrint("\n\u001B[32m[System]\u001B[0m" + " Please Input a Number Between " + 1 + " and " + playerCards.size());
             trade();
         }
-        if (fishCard > playerCards.size()) {
+        if ((fishCard >= playerCards.size()) || (fishCard < 0)) {
             slowPrint("\n\u001B[32m[System]\u001B[0m" + " Please Input a Number Between " + 1 + " and " + playerCards.size());
             trade();
         }
@@ -194,6 +193,7 @@ public class Goldfish {
             slowPrint("\n\u001B[32m[System]\u001B[0m" + " You May Go Again");
             trade();
         }
+        input.close();
     }
 
     public static void cpuTrade() {
@@ -483,19 +483,19 @@ public class Goldfish {
         return statement;  
     }  
 
-    public static Object setCard(Card c, int i, ArrayList array) {
+    public static Object setCard(Card c, int i, ArrayList<Card> array) {
         return array.set(i, c);
     }
     
-    public static boolean addCard(Card c, ArrayList array) {
+    public static boolean addCard(Card c, ArrayList<Card> array) {
         return array.add(c);
     }
 
-    public static Object getAndRemoveCard(int i, ArrayList array) {
+    public static Object getAndRemoveCard(int i, ArrayList<Card> array) {
         return array.remove(i);
     }
 
-    public static void addCard(Card c, int i, ArrayList array) {
+    public static void addCard(Card c, int i, ArrayList<Card> array) {
         array.add(i, c);
     }
 
